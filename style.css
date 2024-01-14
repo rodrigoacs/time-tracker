@@ -1,0 +1,221 @@
+:root {
+  --color-bg: #141414;
+  --color-text: #fff;
+  --color-green: #adff2f;
+  --color-red: #ff0000;
+  --invert: 1;
+}
+
+.light-mode {
+  --color-bg: #fff;
+  --color-text: #141414;
+  --color-green: #008000;
+  --color-red: #ff0000;
+  --invert: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  /* font-family: monospace; */
+  transition: all 0.3s;
+}
+
+*:not(input) {
+  color: var(--color-text);
+}
+
+html {
+  background-color: var(--color-bg);
+  font-size: 16px;
+  min-height: 100%;
+}
+
+body {
+  margin: 0 auto;
+  max-width: 46rem;
+  box-sizing: border-box;
+  min-height: 100%;
+}
+
+input[type=date] {
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  text-align: center;
+  border: none;
+}
+
+input[type=date]:focus-visible {
+  outline: none;
+}
+
+input[type=date]::-webkit-calendar-picker-indicator {
+  /* color */
+  filter: invert(var(--invert));
+}
+
+input[type=time],
+input[type=date] {
+  width: 7rem;
+  height: 2.5rem;
+  font-size: 1rem;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+  background: none;
+  display: none;
+}
+
+input[type=text] {
+  height: 2.5rem;
+  font-size: 1rem;
+  flex: 1;
+}
+
+input#currentDate {
+  width: auto;
+}
+
+button {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 1rem;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.delete {
+  color: var(--color-red);
+}
+
+.delete:hover {
+  opacity: .5;
+}
+
+.delete:active {
+  transform: scale(0.8);
+}
+
+#add {
+  font-size: 1.2rem;
+  color: var(--color-green);
+  font-weight: 500;
+}
+
+#add:hover {
+  opacity: .5;
+}
+
+#add:active {
+  transform: scale(0.8);
+}
+
+.interval {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.interval input {
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  text-align: center;
+  border: none;
+  border-bottom: 2px solid var(--color-text);
+  margin: .1rem;
+}
+
+.interval input:focus {
+  outline: none;
+  border-bottom: 2px solid var(--color-bg);
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: var(--color-bg);
+  padding: 1rem;
+  border-radius: 1rem;
+  width: 40rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content button {
+  color: var(--color-red);
+  font-size: 1.2rem;
+}
+
+.img-desktop {
+  transform: scale(0.8);
+}
+
+.img-mobile {
+  display: none;
+}
+
+.modal-content p {
+  font-size: 1rem;
+  color: var(--color-text);
+  font-weight: 300;
+  text-align: justify;
+}
+
+.modal-content button:hover {
+  opacity: .5;
+}
+
+@media only screen and (max-width: 625px) {
+  .interval {
+    flex-direction: column;
+  }
+
+  .interval input {
+    width: 80%;
+    height: 2.5rem;
+    flex: auto;
+  }
+
+  .modal-content {
+    width: 80%;
+  }
+
+  .img-desktop {
+    display: none;
+  }
+
+  .img-mobile {
+    display: block;
+    transform: scale(0.8);
+  }
+
+}
