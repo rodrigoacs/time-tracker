@@ -1,52 +1,68 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <title>Time Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
-    rel="stylesheet">
-  <title>Time Tracker</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
-</head>
-
-<body>
-  <div class="modal">
-    <div class="modal-content">
-      <button id="close">&times;</button>
-      <img src="./assets/ch_modal.png" class="img-desktop">
-      <img src="./assets/ch_modal_mobile.png" class="img-mobile">
-      <p>
-        [1] insira o horário de início da tarefa. <br>
-        [2] insira o horário de conclusão da tarefa. <br>
-        [3] insira uma breve descrição da tarefa <br>
-        [4] tempo total gasto na tarefa <br>
-        [5] navegação de datas <br>
-        [6] tempo total gasto em todas as tarefas <br>
-        [7] adicionar nova tarefa
-      </p>
-    </div>
-  </div>
-  <div class="inside">
-    <div class="menu">
-      <div>
-        <button id="change-theme" style="width: auto;">🌙/☀️</button>
-        <button id="help">(?)</button>
+  <body>
+    <div class="inside">
+      <div class="menu">
+        <img src="./assets/favicon.ico" class="logo" />
+        <div>
+          <button id="previousDate">&lt;</button>
+          <input type="date" id="currentDate" />
+          <button id="nextDate">&gt;</button>
+        </div>
+        <span id="result">00:00</span>
+        <div>
+          <button id="change-theme" title="Alterar tema">
+            <svg
+              class="sun"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2" />
+              <path d="M12 20v2" />
+              <path d="m4.93 4.93 1.41 1.41" />
+              <path d="m17.66 17.66 1.41 1.41" />
+              <path d="M2 12h2" />
+              <path d="M20 12h2" />
+              <path d="m6.34 17.66-1.41 1.41" />
+              <path d="m19.07 4.93-1.41 1.41" />
+            </svg>
+            <svg
+              class="moon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+            </svg>
+          </button>
+        </div>
       </div>
-      <div>
-        <button id="previousDate">&lt;</button>
-        <input type="date" id="currentDate"></input>
-        <button id="nextDate">&gt;</button>
-      </div>
-      <span id="result">00:00</span>
     </div>
-  </div>
-  <button id="add" style="width: 100%;">+</button>
-</body>
+    <button id="add" style="width: 100%">+</button>
+  </body>
 
-<script src="script.js"></script>
-
+  <script src="script.js"></script>
 </html>

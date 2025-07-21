@@ -1,221 +1,294 @@
+/* =============================================
+   1. VARIÁVEIS, FONTES E ESTILO BASE
+   ============================================= */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@500&display=swap');
+
 :root {
-  --color-bg: #141414;
-  --color-text: #fff;
-  --color-green: #adff2f;
-  --color-red: #ff0000;
-  --invert: 1;
+  /* Modo Escuro (Padrão) */
+  --bg-color: #121212;
+  --bg-secondary-color: #1e1e1e;
+  --text-primary-color: #e1e1e1;
+  --text-secondary-color: #a8a8a8;
+  --primary-accent-color: #22c55e;
+  /* Verde vibrante */
+  --secondary-accent-color: #ef4444;
+  /* Vermelho vibrante */
+  --border-color: #333333;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --invert-icon: 1;
 }
 
 .light-mode {
-  --color-bg: #fff;
-  --color-text: #141414;
-  --color-green: #008000;
-  --color-red: #ff0000;
-  --invert: 0;
+  /* Modo Claro */
+  --bg-color: #f0f2f5;
+  --bg-secondary-color: #ffffff;
+  --text-primary-color: #1c1e21;
+  --text-secondary-color: #65676b;
+  --primary-accent-color: #16a34a;
+  /* Verde escuro */
+  --secondary-accent-color: #dc2626;
+  /* Vermelho escuro */
+  --border-color: #d1d5db;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --invert-icon: 0;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-  /* font-family: monospace; */
-  transition: all 0.3s;
-}
-
-*:not(input) {
-  color: var(--color-text);
 }
 
 html {
-  background-color: var(--color-bg);
+  background-color: var(--bg-color);
   font-size: 16px;
   min-height: 100%;
 }
 
 body {
   margin: 0 auto;
-  max-width: 46rem;
-  box-sizing: border-box;
-  min-height: 100%;
+  padding: 1rem;
+  max-width: 55rem;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  color: var(--text-primary-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-input[type=date] {
-  color: var(--color-text);
-  background-color: var(--color-bg);
-  text-align: center;
-  border: none;
+/* =============================================
+   2. PAINEL DE CONTROLE (MENU)
+   ============================================= */
+.menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  background-color: var(--bg-secondary-color);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px var(--shadow-color);
 }
 
-input[type=date]:focus-visible {
-  outline: none;
+.menu>div {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-input[type=date]::-webkit-calendar-picker-indicator {
-  /* color */
-  filter: invert(var(--invert));
+#result {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 2.75rem;
+  font-weight: 700;
+  color: var(--primary-accent-color);
+  letter-spacing: -1px;
 }
 
-input[type=time],
-input[type=date] {
-  width: 7rem;
-  height: 2.5rem;
-  font-size: 1rem;
+.logo {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
 }
 
-input[type="time"]::-webkit-calendar-picker-indicator {
-  background: none;
-  display: none;
-}
-
-input[type=text] {
-  height: 2.5rem;
-  font-size: 1rem;
-  flex: 1;
-}
-
-input#currentDate {
-  width: auto;
-}
-
+/* =============================================
+   3. BOTÕES E INPUTS
+   ============================================= */
 button {
-  width: 2rem;
-  height: 2rem;
-  border-radius: 1rem;
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  color: var(--text-secondary-color);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
   cursor: pointer;
-  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.6rem 1.2rem;
+  transition: all 0.2s ease-in-out;
 }
 
-.delete {
-  color: var(--color-red);
+button:hover {
+  border-color: var(--primary-accent-color);
+  color: var(--primary-accent-color);
+  background-color: rgba(34, 197, 94, 0.1);
+  /* Fundo sutil no hover */
 }
 
-.delete:hover {
-  opacity: .5;
-}
-
-.delete:active {
-  transform: scale(0.8);
+button:active {
+  transform: scale(0.96);
+  opacity: 0.9;
 }
 
 #add {
-  font-size: 1.2rem;
-  color: var(--color-green);
-  font-weight: 500;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary-accent-color);
+  border: 2px dashed var(--border-color);
+  background-color: transparent;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-top: 1rem;
 }
 
 #add:hover {
-  opacity: .5;
+  border-color: var(--primary-accent-color);
+  background-color: var(--bg-secondary-color);
 }
 
-#add:active {
-  transform: scale(0.8);
+.delete {
+  color: var(--secondary-accent-color);
+  border: none;
+  background: none;
+  font-size: 1.25rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+}
+
+.delete:hover {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: var(--secondary-accent-color);
+}
+
+input[type="time"],
+input[type="date"],
+input[type="text"] {
+  background-color: transparent;
+  color: var(--text-primary-color);
+  border: none;
+  border-bottom: 2px solid var(--border-color);
+  padding: 0.6rem;
+  font-size: 1rem;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  transition: border-color 0.2s ease;
+}
+
+input:focus {
+  outline: none;
+  border-bottom-color: var(--primary-accent-color);
+}
+
+input[type=date]::-webkit-calendar-picker-indicator {
+  filter: invert(var(--invert-icon));
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+input[type=date]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+/* =============================================
+   4. SEÇÃO DE TAREFAS (INTERVALS)
+   ============================================= */
+.inside {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .interval {
   display: flex;
-  justify-content: center;
   align-items: center;
-  margin: 1rem;
-  flex-wrap: wrap;
-  flex-direction: row;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  background-color: var(--bg-secondary-color);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 2px 4px var(--shadow-color);
+  flex-wrap: nowrap;
 }
 
-.interval input {
-  color: var(--color-text);
-  background-color: var(--color-bg);
-  text-align: center;
-  border: none;
-  border-bottom: 2px solid var(--color-text);
-  margin: .1rem;
+.interval input[type="text"] {
+  flex: 1;
+  min-width: 150px;
+  text-align: left;
+  padding-left: 0.5rem;
+  font-weight: 500;
 }
 
-.interval input:focus {
-  outline: none;
-  border-bottom: 2px solid var(--color-bg);
+.interval input[type="time"] {
+  width: 8rem;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 500;
 }
 
-.menu {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  margin: 1rem;
-}
+/* =============================================
+   6. RESPONSIVIDADE
+   ============================================= */
+@media only screen and (max-width: 768px) {
+  body {
+    padding: 0.75rem;
+  }
 
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 100;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  .menu {
+    padding: 1.25rem;
+  }
 
-.modal-content {
-  background-color: var(--color-bg);
-  padding: 1rem;
-  border-radius: 1rem;
-  width: 40rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-content button {
-  color: var(--color-red);
-  font-size: 1.2rem;
-}
-
-.img-desktop {
-  transform: scale(0.8);
-}
-
-.img-mobile {
-  display: none;
-}
-
-.modal-content p {
-  font-size: 1rem;
-  color: var(--color-text);
-  font-weight: 300;
-  text-align: justify;
-}
-
-.modal-content button:hover {
-  opacity: .5;
-}
-
-@media only screen and (max-width: 625px) {
   .interval {
     flex-direction: column;
+    padding: 1.25rem;
+    gap: 1rem;
+    align-items: stretch;
   }
 
   .interval input {
-    width: 80%;
-    height: 2.5rem;
-    flex: auto;
+    width: 100%;
   }
 
-  .modal-content {
-    width: 80%;
-  }
+}
 
-  .img-desktop {
-    display: none;
-  }
+/* =============================================
+   7. BOTÃO DE TEMA (NOVO)
+   ============================================= */
+#change-theme {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border-radius: 50%;
+  overflow: hidden;
+}
 
-  .img-mobile {
-    display: block;
-    transform: scale(0.8);
-  }
+#change-theme svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 22px;
+  height: 22px;
+  color: var(--text-primary-color);
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
 
+#change-theme .sun {
+  transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  opacity: 1;
+}
+
+#change-theme .moon {
+  transform: translate(-50%, 150%) rotate(90deg) scale(0.5);
+  opacity: 0;
+}
+
+.light-mode #change-theme .sun {
+  transform: translate(-50%, -150%) rotate(-90deg) scale(0.5);
+  opacity: 0;
+}
+
+.light-mode #change-theme .moon {
+  transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  opacity: 1;
 }
